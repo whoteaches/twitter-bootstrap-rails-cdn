@@ -5,7 +5,7 @@ require 'twitter-bootstrap-rails-cdn/version'
 module TwitterBootstrap::Rails::Cdn
   module ActionViewExtensions
     OFFLINE = ( ::Rails.env.development? or ::Rails.env.test? )
-    DEFAULT_HOST = :netdna
+    DEFAULT_HOST = :maxcdn
     BOOTSTRAP_VERSIONS = [ '3.3.5', '3.0.0', '2.3.2' ]
 
     def twitter_bootstrap_javascript_url(host = DEFAULT_HOST, options = {})
@@ -56,7 +56,7 @@ module TwitterBootstrap::Rails::Cdn
       ext << '.min' unless options[:compressed] == false
 
       {
-        :netdna => "//netdna.bootstrapcdn.com/#{prefix}/#{version}/#{type}/bootstrap#{ext}.#{type}",
+        :maxcdn => "//maxcdn.bootstrapcdn.com/#{prefix}/#{version}/#{type}/bootstrap#{ext}.#{type}",
         :local  => "bootstrap-#{version}#{ext}"
       }[host]
     end
